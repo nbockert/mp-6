@@ -17,6 +17,7 @@ export async function GET(request:Request) {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
+
         body: new URLSearchParams({
             code,
             client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!,
