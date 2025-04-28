@@ -39,7 +39,12 @@ export async function GET(request:Request) {
         },
     });
     const user = await userResponse.json();
-    return NextResponse.json(user);
+    const params = new URLSearchParams({
+        name: user.name,
+        email: user.email,
+        picture: user.picture,
+    });
+    return NextResponse.json(origin + '/?' + params.toString());
 
 
 }
