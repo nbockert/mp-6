@@ -5,10 +5,11 @@ export async function GET(request:Request) {
 
     const code = searchParams.get('code');
     if (!code) {
+        console.error('No code found');
         return NextResponse.redirect(origin);
     }
 
-    const isLocalhost = origin.includes('3000');
+    const isLocalhost = origin.includes('127.0.0.1') || origin.includes('localhost');
     const redirectUri = isLocalhost
         ? process.env.NEXT_PUBLIC_DEV_REDIRECT_URI!
         : process.env.NEXT_PUBLIC_PROD_REDIRECT_URI!;
@@ -30,7 +31,7 @@ export async function GET(request:Request) {
     const accessToken = tokenData.access_token;
     console.log('Access Token:', accessToken);
     if (!accessToken) {
-
+        console.error('No access token');
         return NextResponse.redirect(origin);
     }
     const userResponse = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {

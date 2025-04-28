@@ -18,7 +18,7 @@ export default function Home(){
 
     const handleSignIn = () => {
     const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!;
-      const isLocalhost = origin.includes('3000');
+    const isLocalhost = origin.includes('127.0.0.1') || origin.includes('localhost');
       const redirectUri = isLocalhost
     ? process.env.NEXT_PUBLIC_DEV_REDIRECT_URI!
         : process.env.NEXT_PUBLIC_PROD_REDIRECT_URI!;
