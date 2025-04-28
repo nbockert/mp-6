@@ -44,7 +44,7 @@ export async function GET(request:Request) {
         email: user.email,
         picture: user.picture,
     });
-    return NextResponse.json(origin + '/?' + params.toString());
+    return NextResponse.redirect(`${origin}/?${params.toString()}`);
 
 
 }
