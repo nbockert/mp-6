@@ -5,6 +5,7 @@ import {useState,useEffect} from "react";
 
 export default function Home(){
     const [user, setUser] = useState<{ name: string, email: string, picture: string } | null>(null);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
         const name = params.get('name');
@@ -14,6 +15,7 @@ export default function Home(){
         if (name && email && picture) {
             setUser({ name, email, picture });
         }
+        setLoading(false);
     }, []);
 
     const handleSignIn = () => {
@@ -29,6 +31,9 @@ export default function Home(){
       const scope = encodeURIComponent("openid profile email");
     window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}`;
   };
+    if (loading) {
+        return null;
+    }
   return (
       <Container
           maxWidth="sm"
