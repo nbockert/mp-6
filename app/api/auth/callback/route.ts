@@ -5,7 +5,7 @@ export async function GET(request:Request) {
 
     const code = searchParams.get('code');
     if (!code) {
-        return NextResponse.redirect("/");
+        return NextResponse.redirect(origin);
     }
 
     const isLocalhost = origin.includes('3000');
