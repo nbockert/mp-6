@@ -4,7 +4,7 @@ import { Button, Typography, Container, Card } from '@mui/material';
 
 export default function Home(){
   const handleSignIn = () => {
-    const clientId = process.env.NEXT_PUBLIC_CLIENT_ID!;
+    const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!;
       const isLocalhost = origin.includes('3000');
       const redirectUri = isLocalhost
     ? process.env.NEXT_PUBLIC_DEV_REDIRECT_URI!
