@@ -24,8 +24,6 @@ export default function Home(){
       const redirectUri = isLocalhost
     ? process.env.NEXT_PUBLIC_DEV_REDIRECT_URI!
         : process.env.NEXT_PUBLIC_PROD_REDIRECT_URI!;
-    console.log(redirectUri);
-      console.log('CLIENT ID:', clientId);
 
 
       const scope = encodeURIComponent("openid profile email");

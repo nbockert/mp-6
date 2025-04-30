@@ -4,9 +4,10 @@ export async function GET(request:Request) {
     const {searchParams,origin} = new URL(request.url);
 
     const code = searchParams.get('code');
+
     if (!code) {
         console.error('No code found');
-        return NextResponse.redirect(origin);
+        return NextResponse.redirect('${origin}/?${params.toString()}');
     }
 
     const isLocalhost = origin.includes('127.0.0.1') || origin.includes('localhost');
@@ -29,7 +30,6 @@ export async function GET(request:Request) {
     });
     const tokenData = await tokenResponse.json();
     const accessToken = tokenData.access_token;
-    console.log('Access Token:', accessToken);
     if (!accessToken) {
         console.error('No access token');
         return NextResponse.redirect(origin);
