@@ -32,7 +32,7 @@ export async function GET(request:Request) {
     const accessToken = tokenData.access_token;
     if (!accessToken) {
         console.error('No access token');
-        return NextResponse.redirect(origin);
+        return NextResponse.redirect('${origin}/?${params.toString()}');
     }
     const userResponse = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
         headers: {
